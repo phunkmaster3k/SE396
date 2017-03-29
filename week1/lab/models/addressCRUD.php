@@ -1,10 +1,11 @@
 <?php
-/**
- * A method to get all data.
- *
- * @return Array
- */
 
+
+/**
+ * Function to return data from database
+ *
+ * @return array
+ */
 function readAllAddress() {
     $db = dbconnect();
     $stmt = $db->prepare("SELECT * FROM address");
@@ -18,7 +19,7 @@ function readAllAddress() {
 }
 
 /**
- * Function to create address
+ * Function to add address to database
  * @param $fullname
  * @param $email
  * @param $addressline1

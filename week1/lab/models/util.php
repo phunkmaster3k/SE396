@@ -10,6 +10,8 @@ function isPostRequest() {
 }
 
 /**
+ * List of states for dropdown
+ *
  * @return array
  */
 function getStates() {
