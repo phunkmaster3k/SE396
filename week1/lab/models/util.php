@@ -9,6 +9,9 @@ function isPostRequest() {
     return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
 }
 
+/**
+ * @return array
+ */
 function getStates() {
     return array(
         'AL'=>'ALABAMA',

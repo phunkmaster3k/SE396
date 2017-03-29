@@ -1,4 +1,9 @@
 <?php
+/**
+ * A method to get all data.
+ *
+ * @return Array
+ */
 
 function readAllAddress() {
     $db = dbconnect();
@@ -12,6 +17,17 @@ function readAllAddress() {
     return $results;
 }
 
+/**
+ * Function to create address
+ * @param $fullname
+ * @param $email
+ * @param $addressline1
+ * @param $city
+ * @param $state
+ * @param $zip
+ * @param $birthday
+ * @return bool
+ */
 function createAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday) {
     $db = dbconnect();
     $stmt = $db->prepare("INSERT INTO address SET fullname = :fullname, email = :email, addressline1 = :addressline1, city = :city, state = :state, zip = :zip, birthday = :birthday");
