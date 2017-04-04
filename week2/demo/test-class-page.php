@@ -15,11 +15,11 @@
             
             echo $test->getTest();
             
-            $test->setTest(true);
+            $test->setTest('true');
             
              echo $test->getTest();
              
-            
+
             //$test->
         
         ?>

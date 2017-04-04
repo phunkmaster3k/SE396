@@ -8,7 +8,11 @@
 class TestClass {
         
     private $test;
-    
+
+    /**
+     * TestClass constructor.
+     * @param $test
+     */
     public function __construct($test) {
         $this->setTest($test);
     }
@@ -16,18 +20,19 @@ class TestClass {
     /**
     * Function getTest.
     *    
-    * @return void;
+    * @return String;
     */   
     public function getTest() {
         return $this->test;
     }
 
-     
+
     /**
-    * Function setTest..
-    *    
-    * @param {String} [$test]
-    */   
+     * Function setTest..
+     *
+     * @param {String} [$test]
+     * @throws Exception
+     */
     public function setTest($test) {
         if ( !is_string($test) ) {
             throw new Exception('only string allowed for test');
@@ -38,6 +43,11 @@ class TestClass {
         
     }
 
+    /**
+     * function description
+     *
+     * @param String $param
+     */
     
    private function functionName($param) {
        
