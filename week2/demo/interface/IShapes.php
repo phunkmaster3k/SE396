@@ -15,7 +15,9 @@
 interface IShapes {
     //put your code here
     
-   public function width();
-   public function height();
+    public function width();
+    public function height();
+    public function area();
+    public function color($color);
     
 }
