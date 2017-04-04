@@ -8,19 +8,24 @@
  */
 class Message implements IMessage
 {
+    protected $messages = [];
+
+
     public function addMessage($key, $msg)
     {
-        // TODO: Implement addMessage() method.
+        $this->messages[$key] = $msg;
     }
 
     public function removeMessage($key)
     {
-        // TODO: Implement removeMessage() method.
+        if ( array_key_exists($key, $this->messages)) {
+            unset($this->messages[$key]);
+        }
     }
 
     public function getAllMessages()
     {
-        // TODO: Implement getAllMessages() method.
+        return $this->messages;
     }
 
 }
