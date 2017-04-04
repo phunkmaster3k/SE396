@@ -9,7 +9,7 @@
         
             require_once './autoload.php';
             
-            $db = new DBSpring();
+            $db = new DBPhone();
             $phones = $db->getAllPhones();
             
             
