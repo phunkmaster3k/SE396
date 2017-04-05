@@ -13,10 +13,11 @@
 <body>
 <?php
 
-include './models/dbconnect.php';
-include './models/addressCRUD.php';
+include './autoload.php';
 
-$addresses = readAllAddress();
+$crud = new CRUD();
+
+$addresses = $crud->readAllAddress();
 
 include './templates/header-links.php';
 include './templates/view-address.html.php';

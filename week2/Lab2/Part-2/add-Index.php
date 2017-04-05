@@ -13,11 +13,12 @@
 </head>
 <body>
 <?php
-require_once './models/dbconnect.php';
-require_once './models/util.php';
-require_once './models/addressCRUD.php';
-require_once './models/validation.php';
 
+require_once './models/DBLab2.php';
+require_once './models/Utility.php';
+require_once './models/CRUD.php';
+require_once './models/Valid.php';
+require_once './models/util.php';
 
 $fullname = filter_input(INPUT_POST, 'fullname');
 $email = filter_input(INPUT_POST, 'email');
@@ -30,7 +31,11 @@ $birthday = filter_input(INPUT_POST, 'birthday');
 $errors = [];
 $states = getStates();
 
+$formCrud = new CRUD();
+$validator = new Valid();
+
 if (isPostRequest()) {
+
     if ( empty($fullname)) {
         $errors[] = 'Fullname is Required.';
     }
@@ -47,20 +52,20 @@ if (isPostRequest()) {
         $errors[] = 'City is Required';
     }
 
-    if ( !isZipValid($zip)) {
+    if ( $validator->isZipValid($zip) === false) {
         $errors[] = 'Invalid Zip';
     }
 
-    if ( !isEmailValid($email)) {
+    if ( $validator->isEmailValid($email) === false) {
         $errors[] = 'Invalid Email';
     }
 
-    if ( !isDateValid($birthday)) {
+    if ( $validator->isDateValid($birthday) === false) {
         $errors[] = 'Invalid birthday';
     }
 
     if ( count($errors) === 0 ) {
-        if ( createAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday)) {
+        if ( $formCrud->createAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday)) {
             $message = 'Address Added';
             $fullname = '';
             $email = '';
