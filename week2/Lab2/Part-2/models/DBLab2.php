@@ -8,33 +8,54 @@
  */
 class DBLab2
 {
+    protected $db = null;
+    protected $dns;
+    protected $user;
+    protected $password;
+
     /**
-     * Function to extablish a databse connection
+     * DBLab2 constructor.
      *
-     * @return PDO Object
+     */
+    function __construct() {
+        $this->dns = 'mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2017';
+        $this->user = 'root';
+        $this->password = '';
+    }
+
+
+    /**
+     * connection function
+     *
+     * @return null|PDO
+     * @throws Exception
      */
     function dbconnect()
     {
-        $config = array(
-            'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2017',
-            'DB_USER' => 'root',
-            'DB_PASSWORD' => ''
-        );
+        /*
+         * If the DB is not null a connection has been made.
+         */
+        if ( null != $this->db ) {
+            return $this->db;
+        }
 
         try {
             /* Create a Database connection and
              * save it into the variable */
-            $db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
-            $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $this->db = new PDO($this->dns, $this->user, $this->password);
+            $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (Exception $ex) {
             /* If the connection fails we will close the
              * connection by setting the variable to null */
-            $db = null;
-            $message = $ex->getMessage();
-            var_dump($message);
-            exit();
+            $this->closeDB();
+            throw new Exception($ex->getMessage());
+
         }
 
-        return $db;
+        return $this->db;
+    }
+
+    protected function closeDB() {
+        $this->db = null;
     }
 }

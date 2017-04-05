@@ -14,11 +14,7 @@
 <body>
 <?php
 
-require_once './models/DBLab2.php';
-require_once './models/Utility.php';
-require_once './models/CRUD.php';
-require_once './models/Valid.php';
-require_once './models/util.php';
+require_once './autoload.php';
 
 $fullname = filter_input(INPUT_POST, 'fullname');
 $email = filter_input(INPUT_POST, 'email');
@@ -29,12 +25,11 @@ $zip = filter_input(INPUT_POST, 'zip');
 $birthday = filter_input(INPUT_POST, 'birthday');
 
 $errors = [];
-$states = getStates();
 
-$formCrud = new CRUD();
-$validator = new Valid();
+$util = new Utility();
+$states = $util->getStates();
 
-if (isPostRequest()) {
+if ($util->isPostRequest()) {
 
     if ( empty($fullname)) {
         $errors[] = 'Fullname is Required.';
@@ -52,6 +47,7 @@ if (isPostRequest()) {
         $errors[] = 'City is Required';
     }
 
+    $validator = new Valid();
     if ( $validator->isZipValid($zip) === false) {
         $errors[] = 'Invalid Zip';
     }
@@ -64,7 +60,11 @@ if (isPostRequest()) {
         $errors[] = 'Invalid birthday';
     }
 
+
     if ( count($errors) === 0 ) {
+
+        $formCrud = new CRUD();
+
         if ( $formCrud->createAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday)) {
             $message = 'Address Added';
             $fullname = '';

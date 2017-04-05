@@ -8,12 +8,14 @@
  */
 class Valid
 {
-    /**
-     * A method to validate a zip code.
-     *
-     * @return boolean
-     */
 
+
+    /**
+     * A method to validate zip code
+     *
+     * @param $Zip
+     * @return bool
+     */
     function isZipValid($Zip) {
         $zipRegEx = '/^[0-9]{5}$/';
 
@@ -26,7 +28,8 @@ class Valid
     /**
      * A method to validate a date.
      *
-     * @return boolean
+     * @param $date
+     * @return bool
      */
 
     function isDateValid($date) {
@@ -36,7 +39,8 @@ class Valid
     /**
      * A method to validate an email.
      *
-     * @return boolean
+     * @param $email
+     * @return bool
      */
 
     function isEmailValid($email) {
