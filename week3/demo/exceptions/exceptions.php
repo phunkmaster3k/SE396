@@ -29,7 +29,7 @@
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
 
-            
+
         }
         
         
@@ -40,9 +40,16 @@
                 "DB_USER"=>'',
                 "DB_PASSWORD"=>''
             );
+
+            $dbConfig = true;
+
            $db = new DB($dbConfig);
            $pdo = $db->getDB();
-           
+
+        } catch (DBException $e) {
+            echo '<br /> Caught ArrayException: ',  $e->getMessage(), "\n";
+
+
         } catch (DBException $e) {
             echo '<br /> Caught DBException: ',  $e->getMessage(), "\n";
         }

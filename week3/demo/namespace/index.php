@@ -12,7 +12,7 @@ include './bootstrap.php'; ?>
         <?php
         
                         
-            $util = new Util();            
+            $util = new Util();
             $scope = new Scope();
         
         ?>

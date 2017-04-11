@@ -11,10 +11,12 @@
         
         try {
             $scope = new week3\gforti\Scope();
+
+            $scope->hello = 'world';
         
             $scope->test = 'hello';
         
-            echo $scope->test;
+            echo $scope->test . $scope->hello;
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
