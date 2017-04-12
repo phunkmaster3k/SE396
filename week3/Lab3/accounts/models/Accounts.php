@@ -11,6 +11,9 @@ class Accounts extends DB
 {
 
 
+    /**
+     * Accounts constructor.
+     */
     public function __construct()
     {
         $dbConfig = array(
@@ -22,6 +25,13 @@ class Accounts extends DB
         parent::__construct($dbConfig);
     }
 
+    /**
+     * Adds user to DB
+     *
+     * @param $email
+     * @param $password
+     * @return bool
+     */
     public function signup($email, $password) {
         $db = $this->getDB();
         $stmt = $db->prepare("INSERT INTO users SET email = :email, password = :password, created = NOW()");
@@ -37,6 +47,13 @@ class Accounts extends DB
         return false;
     }
 
+    /**
+     * Checks users login
+     *
+     * @param $email
+     * @param $password
+     * @return mixed
+     */
     public function login($email, $password){
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
@@ -57,6 +74,12 @@ class Accounts extends DB
 
     }
 
+    /**
+     * Gets user email based on ID
+     *
+     * @param $user_id
+     * @return mixed
+     */
     public function getEmail($user_id) {
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM users WHERE user_id = :user_id LIMIT 1");
@@ -69,6 +92,20 @@ class Accounts extends DB
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             return $results['email'];
         }
+    }
+
+    public function uniqueEmail($email){
+        $db = $this->getDB();
+        $stmt = $db->prepare("SELECT * FROM users WHERE email = :email");
+
+        $binds = array(
+            ":email" => $email
+        );
+
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            return false;
+        }
+
     }
 
 

@@ -2,7 +2,8 @@
 /**
  * A method to validate a zip code.
  *
- * @return boolean
+ * @param $Zip
+ * @return bool
  */
 
 function isZipValid($Zip) {
@@ -17,7 +18,8 @@ function isZipValid($Zip) {
 /**
  * A method to validate a date.
  *
- * @return boolean
+ * @param $date
+ * @return bool
  */
 
 function isDateValid($date) {
@@ -27,7 +29,8 @@ function isDateValid($date) {
 /**
  * A method to validate an email.
  *
- * @return boolean
+ * @param $email
+ * @return bool
  */
 
 function isEmailValid($email) {

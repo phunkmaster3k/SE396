@@ -21,11 +21,18 @@ class DB {
     public function __construct($dbConfig) {
         $this->setDbConfig($dbConfig);      
     }
-    
+
+    /**
+     * @return array
+     */
     private function getDbConfig() {
         return $this->dbConfig;
     }
 
+    /**
+     * @param $dbConfig
+     * @throws ArrayException
+     */
     private function setDbConfig($dbConfig) {
         if ( is_array($dbConfig))
         {
@@ -37,13 +44,15 @@ class DB {
         }
 
     }
-    
+
+
     /**
-    * A method to get our database connection.
-    *    
-    * @return PDO
-    */           
-    public function getDB() { 
+     * A method to get our database connection.
+     *
+     * @return null|PDO
+     * @throws DBException
+     */
+    public function getDB() {
         if ( null != $this->db ) {
             return $this->db;
         }

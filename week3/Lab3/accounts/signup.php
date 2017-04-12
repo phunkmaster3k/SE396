@@ -11,22 +11,35 @@
         $util = new Util();
         $accounts = new Accounts();
 
+
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
 
+        $errors = [];
+
         if ($util->isPostRequest()){
 
-            if ( $accounts->signup($email, $password)) {
-                echo "worked";
-                $util->redirect("login.php");
+            $validation = new Validation();
+
+            if ( $validation->isEmailValid($email) === false) {
+                $errors[] = 'Invalid Email';
             }
-            else {
-                echo "no work";
+            else if ( $accounts->uniqueEmail($email) === false){
+                $errors[] = 'Duplicate Email';
             }
 
+            if ( count($errors) === 0 ) {
+                if ( $accounts->signup($email, $password)) {
+                    $util->redirect("login.php");
+                }
+                else {
+                    $errors[] = 'Could not add account';
+                }
+            }
         }
 
         include './views/signup.html.php';
+        include './views/errors.html.php';
 
 
 

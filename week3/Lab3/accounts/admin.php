@@ -15,13 +15,8 @@
 
             $logout = filter_input(INPUT_GET, 'logout');
 
-
-
             $email = $accounts->getEmail($_SESSION['user_ID']);
-
-            echo "email: " . $email;
-            echo "ID: " . $_SESSION['user_ID'];
          ?>
-    <input type="submit" name="logout" value="logout" />
+    <p>Logged in as <?php echo $_SESSION['user_ID'] . ' ' . $email; ?> <a></a></p>
     </body>
 </html>

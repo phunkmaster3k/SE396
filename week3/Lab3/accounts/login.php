@@ -27,7 +27,7 @@
                 $util->redirect("admin.php");
             }
             else {
-                echo 'wrong ';
+
             }
 
         }
