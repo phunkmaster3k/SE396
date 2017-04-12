@@ -94,6 +94,12 @@ class Accounts extends DB
         }
     }
 
+    /**
+     * check for unique email
+     *
+     * @param $email
+     * @return bool
+     */
     public function uniqueEmail($email){
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM users WHERE email = :email");

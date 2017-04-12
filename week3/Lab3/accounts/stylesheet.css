@@ -1,0 +1,11 @@
+body {
+    padding-top: 30px;
+    background-color: lightgoldenrodyellow;
+}
+
+.form-control {
+    width: 300px;
+}
+#state {
+    width: auto;
+}
