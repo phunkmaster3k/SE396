@@ -21,7 +21,7 @@ class Dog
 
     public function bark()
     {
-        echo "$this->$name is barking";
+        echo "$this->name is barking";
     }
 }
 
