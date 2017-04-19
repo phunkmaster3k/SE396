@@ -13,8 +13,8 @@ $directory = new DirectoryIterator($folder);
         <?php if ( $fileInfo->isFile() ) : ?>
             <li>
                 <?php echo $fileInfo->getFilename(); ?>
-                <input type="submit" value="View" />
-                <input type="submit" value="Delete" />
+                <a href="read.php?file=<?php echo $fileInfo->getFilename(); ?>" class = "btn btn-default btn-sm">View</a>
+
             </li>
         <?php endif; ?>
     <?php endforeach; ?>
