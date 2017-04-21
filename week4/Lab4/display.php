@@ -7,11 +7,29 @@
     <body>
         <?php
 
+        $folder = '.'.DIRECTORY_SEPARATOR.'uploads';
+        if ( !is_dir($folder) ) {
+            die($error = 'Folder <strong>' . $folder . '</strong> does not exist' );
+        }
+        $directory = new DirectoryIterator($folder);
+
+
+        if (isset($_GET['delete'])) {
+            $file = $folder.DIRECTORY_SEPARATOR.$_GET['delete'];
+            if (is_file($file)) {
+                unlink($file);
+                $message = "File Deleted";
+            } else {
+                $error = $_GET['delete'] . " Does not exist.";
+            }
+
+        }
 
 
 
-
-        include './views/list.html.php'
+        include './views/list.html.php';
+        include './views/errors.html.php';
+        include './views/messages.html.php';
 
         ?>
     </body>
