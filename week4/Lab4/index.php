@@ -12,7 +12,6 @@
 
         if ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' ) {
 
-
             $uploader = new uploader();
 
             try {

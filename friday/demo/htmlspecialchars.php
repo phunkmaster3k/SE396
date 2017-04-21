@@ -11,7 +11,8 @@
         Header("X-XSS-Protection: 0");
         session_start();
         
-        $s = filter_input(INPUT_POST, 'badHTML');        
+        $s = filter_input(INPUT_POST, 'badHTML');
+        // use when outputing data to the user
         echo htmlspecialchars($s, ENT_QUOTES); 
         echo $s;
         ?>

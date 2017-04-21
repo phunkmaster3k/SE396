@@ -15,12 +15,12 @@
 
 
         if (isset($_GET['delete'])) {
-            $file = $folder.DIRECTORY_SEPARATOR.$_GET['delete'];
+            $file = $folder.DIRECTORY_SEPARATOR.filter_input(INPUT_GET, 'delete');
             if (is_file($file)) {
                 unlink($file);
                 $message = "File Deleted";
             } else {
-                $error = $_GET['delete'] . " Does not exist.";
+                $error = filter_input(INPUT_GET, 'delete') . " Does not exist.";
             }
 
         }
