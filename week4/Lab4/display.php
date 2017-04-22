@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     </head>
     <body>
         <?php
@@ -14,19 +19,17 @@
         $directory = new DirectoryIterator($folder);
 
 
-        if (isset($_GET['delete'])) {
-            $file = $folder.DIRECTORY_SEPARATOR.filter_input(INPUT_GET, 'delete');
+        if (filter_has_var(INPUT_GET, "delete")) {
+            $fileName = filter_input(INPUT_GET, 'delete');
+            $file = $folder.DIRECTORY_SEPARATOR.$fileName;
             if (is_file($file)) {
                 unlink($file);
                 $message = "File Deleted";
             } else {
-                $error = filter_input(INPUT_GET, 'delete') . " Does not exist.";
+                $error = $fileName . " Does not exist.";
             }
-
         }
-
-
-
+        include './views/header.html.php';
         include './views/list.html.php';
         include './views/errors.html.php';
         include './views/messages.html.php';
