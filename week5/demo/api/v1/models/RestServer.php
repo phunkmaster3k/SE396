@@ -24,9 +24,9 @@ class RestServer {
         "errors" => NULL,
         "data" => NULL
     );
-    private $resource;
+    private $resource; //required
     private $id;
-    private $verb;
+    private $verb; // required
     private $serverData;
 
     /**
