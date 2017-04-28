@@ -61,7 +61,7 @@ try {
         
         
         if ( 'PUT' === $verb ) {
-            //finish this
+
             if ( NULL === $id ) {
                 throw new InvalidArgumentException($resourceUCName. ' ID ' . $id . ' was not found');
             }

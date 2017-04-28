@@ -6,6 +6,9 @@
  */
 class CorpsResource extends DBSpring implements IRestModel
 {
+    /**
+     * @return array
+     */
     public function getAll() {
         $stmt = $this->getDb()->prepare("SELECT * FROM corps");
         $results = array();
@@ -15,6 +18,10 @@ class CorpsResource extends DBSpring implements IRestModel
         return $results;
     }
 
+    /**
+     * @param $id
+     * @return array|mixed
+     */
     public function get($id) {
 
         $stmt = $this->getDb()->prepare("SELECT * FROM corps where id = :id");
@@ -29,6 +36,10 @@ class CorpsResource extends DBSpring implements IRestModel
 
     }
 
+    /**
+     * @param $serverData
+     * @return bool
+     */
     public function post($serverData) {
         /* note you should validate before adding to the data base */
         $stmt = $this->getDb()->prepare("INSERT INTO corps SET corp = :corp, incorp_dt = :incorp_dt, email = :email, owner = :owner, phone = :phone, location = :location");
@@ -47,6 +58,11 @@ class CorpsResource extends DBSpring implements IRestModel
         return false;
     }
 
+    /**
+     * @param $serverData
+     * @param $id
+     * @return bool
+     */
     public function put($serverData, $id) {
 
         $stmt = $this->getDb()->prepare("UPDATE corps SET corp = :corp, incorp_dt = :incorp_dt, email = :email, owner = :owner, phone = :phone, location = :location WHERE id = :id");
@@ -66,12 +82,16 @@ class CorpsResource extends DBSpring implements IRestModel
         return false;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function delete($id) {
 
         $stmt = $this->getDb()->prepare("DELETE FROM corps WHERE id = :id");
         $binds = array(":id" => $id);
 
-        if ($stmt->execute($binds)) {
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             return true;
         }
 

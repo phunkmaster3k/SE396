@@ -21,20 +21,26 @@ class DB {
     public function __construct($dbConfig) {
         $this->setDbConfig($dbConfig);      
     }
-    
+
+    /**
+     * @return array
+     */
     protected function getDbConfig() {
         return $this->dbConfig;
     }
 
+    /**
+     * @param $dbConfig
+     */
     protected function setDbConfig($dbConfig) {
         $this->dbConfig = $dbConfig;
     }
-    
+
     /**
-    * A method to get our database connection.
-    *    
-    * @return PDO
-    */           
+     * A method to get our database connection.
+     * @return PDO
+     * @throws Exception
+     */
     public function getDB() { 
         if ( null != $this->db ) {
             return $this->db;
