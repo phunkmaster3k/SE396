@@ -32,9 +32,9 @@ function TodoService() {
         return service;
     };
     
-    function remove() {        
+    function remove(index) {
         var list = getTodoList(),
-            itemRemoved = list.pop();
+            itemRemoved = list.splice(index, 1);
         console.log('item Removed ' + itemRemoved);
         return service;
     };
