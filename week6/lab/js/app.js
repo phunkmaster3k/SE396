@@ -11,13 +11,19 @@
     function config($routeProvider) {
         $routeProvider.
             when('/', {
-                templateURL: 'js/phone-list.template.html',
+                templateUrl: 'js/phone-list.template.html',
                 controller: 'PhoneListController',
                 controllerAs: 'vm'
 
+
+            }).
+            when('/phones/:phoneId', {
+            templateUrl: 'js/phone-detail.template.html',
+            controller: 'PhoneDetailController',
+            controllerAs: 'vm'
             }).
                 otherwise({
-                    redirectTo: '/'
+                redirectTo: '/'
             });
     }
 }) ();
