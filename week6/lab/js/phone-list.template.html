@@ -1,7 +1,12 @@
+
+<! html to display when this view is called
+
 <h1>Phones</h1>
 
 <ul class="phone">
+    <!-- ng-repeat is a built in loop given the array data (vm.phones) sent -->
     <li ng-repeat="phone in vm.phones">
+        <!-- get the id from the url and display it -->
         <a href="#/phones/{{phone.id}}">{{phone.name | uppercase}}<br /><img ng-src="{{phone.imageUrl}}"></a>
     </li>
 </ul>
