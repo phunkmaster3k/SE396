@@ -6,12 +6,14 @@
     <!-- https://docs.angularjs.org/api/ng/filter/filter -->
     <br />
     <br /> 
-    
+    <p>{{vm.message}}</p>
     <table class="gridtable">
         <thead>
             <tr>
                 <th>Fullname</th>
                 <th>Email</th>                
+                <th></th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>    
@@ -20,7 +22,8 @@
             <td>{{address.fullname}}</td>                  
             <td>{{address.email}}</td>
             <td><a ng-href="#/address/{{address.address_id}}">View</a></td>
-            <td><a ng-href="#/address/delete/{{address.address_id}}">View</a></td>
+            <td><a ng-href="#/address/delete/{{address.address_id}}" data-confirm-delete>Delete Link</a></td>
+            <td><button ng-click="vm.deleteAddress(address.address_id)">Delete</button></td>
         </tr>
     </table>
         

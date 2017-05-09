@@ -24,10 +24,10 @@
                 controller: 'AddressDetailController',
                 controllerAs: 'vm'
             }).
-                when('/address/delete/:addressId', {
-                    templateUrl: 'js/address/address-delete.template.html',
-                    controller: 'AddressDeleteController',
-                    controllerAs: 'vm'
+            when('/address/delete/:addressId', {
+                templateUrl: 'js/address/address-delete.template.html',
+                controller: 'AddressDeleteController',
+                controllerAs: 'vm'
             });
     }
 
