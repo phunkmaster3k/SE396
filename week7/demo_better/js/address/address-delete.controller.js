@@ -12,7 +12,7 @@
     function AddressDeleteController($routeParams, AddressService) {
         var vm = this;
 
-        vm.addressId = $routeParams.addressId;
+        //vm.addressId = $routeParams.addressId;
         vm.message = '';
 
         activate();

@@ -7,7 +7,7 @@
     angular
         .module('app.corps')
         .constant('REQUEST', {
-            'Corps' : '../../week5/demo/api/v1/corps'
+            'Corps' : '../../week5/Lab5/api/v1/corps'
         });
 
 })();

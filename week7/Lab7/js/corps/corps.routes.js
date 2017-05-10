@@ -13,7 +13,7 @@
     function config($routeProvider) {
         $routeProvider.
         when('/corps', {
-            templateUrl: 'js/corps/corpses.template.html',
+            templateUrl: 'js/corps/corps.template.html',
             controller: 'CorpsController',
             controllerAs: 'vm'
         }).

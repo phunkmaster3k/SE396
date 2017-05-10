@@ -20,7 +20,7 @@
         ////////////
 
         function activate() {
-            CorpsService.getAllCorpses().then(function (response) {
+            CorpsService.getAllCorps().then(function (response) {
                 vm.corps = response;
             });
         }

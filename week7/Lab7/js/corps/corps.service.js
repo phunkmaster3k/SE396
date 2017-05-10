@@ -15,10 +15,10 @@
      */
     function CorpsService($http, REQUEST) {
 
-        var url = REQUEST.Address;
+        var url = REQUEST.Corps;
 
         var service = {
-            'getAllCorpses' : getAllCorpses,
+            'getAllCorps' : getAllCorps,
             'getCorps' : getCorps,
             'postCorps' : postCorps,
             'deleteCorps' : deleteCorps,
@@ -27,7 +27,7 @@
         };
         return service;
 
-        function getAllCorpses() {
+        function getAllCorps() {
             return $http.get(url)
                 .then(handleSuccess, handleFailed);
 
