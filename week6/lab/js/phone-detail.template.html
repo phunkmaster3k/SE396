@@ -1,0 +1,13 @@
+
+<!-- HTML to display when this view is called -->
+<h1>{{"phone name" | uppercase}}</h1>
+
+<div class="content">
+
+    <!-- displays the image associated with the phone based on it's ID -->
+    <img ng-src="{{vm.phone.imageUrl}}" />
+    <!-- displayes  carrier info from the phone JSON object-->
+    <p ng-if="vm.phone.carrier.length > 0"><strong>Carrier:</strong> {{vm.phone.carrier}}</p>
+    <!-- displayes snippet info from the phone JSON object-->
+    <p>{{vm.phone.snippet}}</p>
+</div>

@@ -1,24 +1,20 @@
-<<?php
+<?php
+
 /**
  * Created by PhpStorm.
  * User: Nathan Livernols
  * Date: 4/11/2017
  * Time: 7:55 PM
  */
-class Accounts extends DB
+class Accounts extends DBSpring
+
 {
+
+
     /**
      * Accounts constructor.
      */
-    public function __construct()
-    {
-        $dbConfig = array(
-            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2017',
-            "DB_USER"=>'root',
-            "DB_PASSWORD"=>''
-        );
-        parent::__construct($dbConfig);
-    }
+
     /**
      * Adds user to DB
      *
@@ -38,6 +34,7 @@ class Accounts extends DB
         }
         return false;
     }
+
     /**
      * Checks users login
      *
@@ -59,6 +56,7 @@ class Accounts extends DB
             }
         }
     }
+
     /**
      * Gets user email based on ID
      *
@@ -76,6 +74,7 @@ class Accounts extends DB
             return $results['email'];
         }
     }
+
     /**
      * check for unique email
      *
@@ -92,4 +91,6 @@ class Accounts extends DB
             return false;
         }
     }
+
+
 }
