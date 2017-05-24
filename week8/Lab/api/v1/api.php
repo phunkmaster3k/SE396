@@ -80,8 +80,8 @@ try {
         
     } elseif ( 'login' === $resource ) {
         $login = new Accounts();
-        if ($login->login($serverData['email'], $serverData['password'])) {
-            $restServer->setData(array("token" => $jwt->generateJWT(array("email" => 'test@test.com'), $secrect_key)));
+        if ( $login->login($serverData['email'], $serverData['password']) ) {
+            $restServer->setData(array("token" => $jwt->generateJWT(array("email" => $serverData['email']), $secrect_key)));
         }
         else {
             throw new InvalidArgumentException("Login Failed");

@@ -50,11 +50,11 @@ class Accounts extends DBSpring
         );
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (password_verify($password, $results['password']))
-            {
-                return $results['user_id'];
+            if (password_verify($password, $results['password'])) {
+                return true;
             }
         }
+        return false;
     }
 
     /**
